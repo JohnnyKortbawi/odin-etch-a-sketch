@@ -1,0 +1,61 @@
+body {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#title {
+  font-weight: bold;
+  font-size: 36px;
+}
+
+#grid-container {
+  display: flex;
+  flex-direction: column; 
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 1 / 1; 
+  border: 2px solid rgba(0, 0, 0);
+}
+
+#grid-select-size {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.grid-row {
+  display: flex;
+  flex: 1; 
+}
+
+.grid-box {
+  flex: 1; 
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+button {
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  /*box-shadow: 3px 3px;*/
+}
+
+#btn-toggle-gridlines:active {
+  translate: 3px 3px;
+  box-shadow: 0px 0px;
+  transition: 0.02s;
+}
+
+#grid-slider {
+  cursor: pointer; 
+}
+
+
