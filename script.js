@@ -4,6 +4,7 @@ const gridSizeText = document.querySelector('#grid-size-text');
 const btnToggleGridLines = document.querySelector('#btn-toggle-gridlines');
 const btnToggleRainbow = document.querySelector('#btn-toggle-rainbow');
 const btnToggleShading = document.querySelector('#btn-toggle-shading');
+const btnReset = document.querySelector('#btn-reset');
 
 let isGridLinesToggled = false;
 let isRainbowToggled = false;
@@ -16,6 +17,7 @@ gridSlider.addEventListener('input', () => createGrid(gridSlider.value));
 btnToggleGridLines.addEventListener('click', () => toggleGridLines());
 btnToggleRainbow.addEventListener('click', () => toggleRainbow());
 btnToggleShading.addEventListener('click', () => toggleShading());
+btnReset.addEventListener('click', () => resetGrid());
 
 function getRandomHueStep() {
   // Generate a small random step to change the hue, ensuring smooth transitions
@@ -55,6 +57,13 @@ function toggleRainbow () {
 
 function toggleShading() {
   btnToggleShading.classList.toggle('toggled');
+}
+
+function resetGrid() {
+  let gridBoxes = document.querySelectorAll('.grid-box');
+  gridBoxes.forEach((gridItem) => {
+    gridItem.style.backgroundColor = 'white';
+  })
 }
 
 function createGrid(gridSize) {

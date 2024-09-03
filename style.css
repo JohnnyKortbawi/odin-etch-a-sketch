@@ -65,6 +65,12 @@ button.toggled {
   transition: 0.02s;
 }
 
+#btn-reset:active {
+  translate: 0px 3px;
+  box-shadow: 0px 0px;
+  transition: 0.02s;
+}
+
 #btn-container {
   display: flex;
   justify-content: space-evenly;
