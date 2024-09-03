@@ -33,6 +33,7 @@ body {
 #grid-size-text {
   width: 120px;
   padding: 0px;
+  font-weight: bold;
 }
 
 .grid-row {

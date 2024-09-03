@@ -8,6 +8,8 @@ const btnToggleShading = document.querySelector('#btn-toggle-shading');
 let isGridLinesToggled = false;
 let isRainbowToggled = false;
 let defaultGridSize = 16;
+let hue = 0;
+
 createGrid(defaultGridSize);
 
 gridSlider.addEventListener('input', () => createGrid(gridSlider.value));
@@ -20,28 +22,9 @@ function getRandomHueStep() {
   return Math.floor(Math.random() * 30) - 15; // Small change in hue (-15 to +15)
 }
 
-function getNextColor(prevHue) {
-  // Adjust the hue slightly for the next color
-  let newHue = (prevHue + getRandomHueStep()) % 360;
-  if (newHue < 0) newHue += 360; // Ensure hue stays in the 0-360 range
-  const saturation = 70; // Set a fixed saturation for vivid colors
-  const lightness = 50;  // Set a fixed lightness for balanced brightness
-  return `hsl(${newHue}, ${saturation}%, ${lightness}%)`;
-}
-
-function cycleColorOnHover(gridItem) {
-  // Initialize with a random hue
-  let currentHue = Math.floor(Math.random() * 360);
-  
-  gridItem.addEventListener('mouseenter', () => {
-    // Get the next color based on the current hue
-    const nextColor = getNextColor(currentHue);
-    // Apply the color with a smooth transition
-    gridItem.style.backgroundColor = nextColor;
-    
-    // Update the current hue for the next transition
-    currentHue = (currentHue + getRandomHueStep()) % 360;
-  });
+function changeHue() {
+  hue = (hue + 2) % 360; // Increment the hue and loop back after 360
+  return `hsl(${hue}, 100%, 50%)`; // Return the HSL color string with full saturation and 50% lightness
 }
 
 function colorBox(gridItem, color) {
@@ -49,8 +32,9 @@ function colorBox(gridItem, color) {
     gridItem.style.backgroundColor = color;
   }
   else {
-    gridItem.style.backgroundColor = `rgb(${Math.random()*256}, ${Math.random()*256}, ${Math.random()*256})`;
-    console.log(gridItem.style.backgroundColor);
+    // gridItem.style.backgroundColor = `rgb(${Math.random()*256}, ${Math.random()*256}, ${Math.random()*256})`;
+    const newColor = changeHue();
+    gridItem.style.backgroundColor = newColor;
   } 
 }
 
