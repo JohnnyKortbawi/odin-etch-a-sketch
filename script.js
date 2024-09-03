@@ -8,6 +8,7 @@ const btnReset = document.querySelector('#btn-reset');
 
 let isGridLinesToggled = false;
 let isRainbowToggled = false;
+let isShadingToggled = false;
 let defaultGridSize = 16;
 let hue = 0;
 
@@ -19,28 +20,26 @@ btnToggleRainbow.addEventListener('click', () => toggleRainbow());
 btnToggleShading.addEventListener('click', () => toggleShading());
 btnReset.addEventListener('click', () => resetGrid());
 
-function getRandomHueStep() {
-  // Generate a small random step to change the hue, ensuring smooth transitions
-  return Math.floor(Math.random() * 30) - 15; // Small change in hue (-15 to +15)
-}
-
 function changeHue() {
   hue = (hue + 2) % 360; // Increment the hue and loop back after 360
   return `hsl(${hue}, 100%, 50%)`; // Return the HSL color string with full saturation and 50% lightness
 }
 
 function colorBox(gridItem, color) {
-  if (!isRainbowToggled) {
-    gridItem.style.backgroundColor = color;
-  }
-  else {
+  if (isRainbowToggled) {
     // gridItem.style.backgroundColor = `rgb(${Math.random()*256}, ${Math.random()*256}, ${Math.random()*256})`;
     const newColor = changeHue();
     gridItem.style.backgroundColor = newColor;
-  } 
+  }
+  else if (isShadingToggled) {
+    alert("Shading function not added yet!")
+  }
+  else {
+    gridItem.style.backgroundColor = color;
+  }
 }
 
-function toggleGridLines () {
+function toggleGridLines() {
   isGridLinesToggled = !isGridLinesToggled;
   btnToggleGridLines.classList.toggle('toggled');
   document.querySelectorAll('.grid-box').forEach(
@@ -50,13 +49,23 @@ function toggleGridLines () {
   )
 }
 
-function toggleRainbow () {
+function toggleRainbow() {
   isRainbowToggled = !isRainbowToggled;
   btnToggleRainbow.classList.toggle('toggled');
+
+  if (btnToggleShading.classList.contains('toggled')) {
+    btnToggleShading.classList.toggle('toggled');
+  }
 }
 
 function toggleShading() {
+  isShadingToggled = !isShadingToggled;
   btnToggleShading.classList.toggle('toggled');
+
+  if (btnToggleRainbow.classList.contains('toggled')) {
+    isRainbowToggled = !isRainbowToggled;
+    btnToggleRainbow.classList.toggle('toggled');
+  }
 }
 
 function resetGrid() {
@@ -74,10 +83,10 @@ function createGrid(gridSize) {
   for (let i = 0; i < gridSize; i++) {
     let gridRow = document.createElement('div');
     gridRow.classList.add('grid-row');
-    
+
     for (let j = 0; j < gridSize; j++) {
       let gridBox = document.createElement('div');
-      if(isGridLinesToggled) {
+      if (isGridLinesToggled) {
         gridBox.classList.toggle('toggled');
       }
       gridBox.classList.add('grid-box');
@@ -85,9 +94,9 @@ function createGrid(gridSize) {
       gridBox.addEventListener('mouseenter', () => colorBox(gridBox, 'black'));
       gridRow.appendChild(gridBox);
     }
-    
+
     gridContainer.appendChild(gridRow);
-}
+  }
 }
 
 

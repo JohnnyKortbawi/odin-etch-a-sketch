@@ -104,11 +104,5 @@ button.toggled {
   cursor: pointer; /* Cursor on hover */
 }
 
-#grid-slider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
 
 
