@@ -9,13 +9,14 @@
 <body>
     <div id="title">Etch a Sketch</div>
     <div id="grid-select-size">
-      <div id="grid-size-text"></div>
       <input id="grid-slider" type="range" min="16" max="`100" value="16">
+      <div id="grid-size-text"></div>
     </div>
-    <div>
+    <div id="btn-container">
+      <button id="btn-toggle-rainbow">Rainbow</button>
+      <button id="btn-toggle-shading">Shading</button>
       <button id="btn-toggle-gridlines">Toggle Gridlines</button>
-      <button>Shading</button>
-      <button>Rainbow</button>
+      <button>Reset</button>
     </div>
     <div id="grid-container"></div>
   <script src="./script.js"></script>
