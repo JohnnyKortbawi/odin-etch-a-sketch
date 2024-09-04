@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <title>Odin Etch a Sketch </title>
 </head>
 <body>
-    <div id="title">Etch a Sketch</div>
-    <div id="grid-select-size">
-      <input id="grid-slider" type="range" min="16" max="`100" value="16">
-      <div id="grid-size-text"></div>
-    </div>
+    <div id="title">Etch-a-Sketch</div>
     <div id="btn-container">
       <button id="btn-toggle-rainbow">Rainbow</button>
       <button id="btn-toggle-shading">Shading</button>
@@ -19,6 +18,10 @@
       <button id="btn-reset">Clear Grid</button>
     </div>
     <div id="grid-container"></div>
+    <div id="grid-select-size">
+      <input id="grid-slider" type="range" min="16" max="`100" value="16">
+      <div id="grid-size-text"></div>
+    </div>
   <script src="./script.js"></script>
 </body>
 </html>

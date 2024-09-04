@@ -54,6 +54,7 @@ function toggleRainbow() {
   btnToggleRainbow.classList.toggle('toggled');
 
   if (btnToggleShading.classList.contains('toggled')) {
+    isShadingToggled = !isShadingToggled;
     btnToggleShading.classList.toggle('toggled');
   }
 }
@@ -92,6 +93,7 @@ function createGrid(gridSize) {
       gridBox.classList.add('grid-box');
 
       gridBox.addEventListener('mouseenter', () => colorBox(gridBox, 'black'));
+      
       gridRow.appendChild(gridBox);
     }
 
